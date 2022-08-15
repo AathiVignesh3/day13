@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header">
+    <center>Current task Details </center>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= task.name %>
+    <%= task.due_date %> </h5>
+    <p class="card-text"> <% if task.status %>
+    <span class="text-white bg-success"><%="Completed"%></span>
+    <% else%>
+    <span class="text-white bg-danger"><%= "Pending" %> </span>
+    <%end%>
+    </p>
+    <%= link_to "Edit this task", edit_task_path(@task), class:"btn btn-warning m-3" %> 
+  <%= link_to "Back to task", tasks_path,class:"btn btn-secondary m-3"  %>
+  </div>
+</div>

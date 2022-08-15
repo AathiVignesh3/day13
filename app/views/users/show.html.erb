@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "users/userCard",:user=>@user %>
+
+ <%begin%>
+ <%if Task.where(user_id: @user.id)[0].id>0%>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<% Task.where(user_id: @user.id).each do |task|%>
+
+<tr scope="row"><%= render "tasks/task", :task => task %>
+</tr>
+<% end %>
+  </tbody>
+</table>
+
+<%end%>
+<%rescue %>
+<p><%="NO task assigned for this user"%></p>
+ <%end%>
+<div>
+  
+  <%= button_to "Destroy this user", @user, method: :delete,class:"btn btn-danger m-3"  %>
+</div>

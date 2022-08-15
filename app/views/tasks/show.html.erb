@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "tasks/taskCard",:task=>@task %>
+
+<table class="table table-light">
+  <thead class="bg-light">
+    <tr>
+      <th></th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Dob</th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody>
+<% User.where(id: @task.user_id).each do |user|%>
+<tr><%= render "users/user", :user => user %>
+</tr>
+<%end%>
+</tbody>
+</table>
+
+<div>
+  <%= button_to "Destroy this task", @task, method: :delete , class:"btn btn-danger"%>
+</div>

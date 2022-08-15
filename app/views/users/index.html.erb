@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+<table class="table table-light">
+  <thead class="bg-light">
+    <tr>
+      <th></th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Dob</th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody>
+<div id="users">
+  <% @users.each do |user| %>
+  <tr>
+    <%= render user %>
+     <td><%= link_to "Show this user", user ,class:"btn btn-primary btn-sm"%></td>
+  </tr>
+  <% end %>
+</div>
+</tbody>
+</table>
+
+<%= link_to "New user", new_user_path, class:"btn btn-success" %>

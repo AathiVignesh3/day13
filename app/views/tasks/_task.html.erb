@@ -1,0 +1,12 @@
+
+
+<td><%= task.name %></td>
+<td> <%= task.due_date %></td>
+<td><% if task.status %>
+ <%= "Completed" %>
+ <% else%>
+ <%= "Pending"%>
+ <%end%>
+ </td>
+<td><%= link_to "Show this task", task ,class:"btn btn-primary"%></td>
+
