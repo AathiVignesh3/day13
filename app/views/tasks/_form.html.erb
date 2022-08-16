@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="mb-3 row">
-    <%= form.label :name, style: "display: block", class:"col-sm-4 col-form-label" %>
+    <%= form.label :name,style: "display: block", class:"col-sm-4 col-form-label" %>
        <div class="col-sm-4">
     <%= form.text_field :name, class:"form-control col-6" %>
   </div>
@@ -32,6 +32,7 @@
     <%= form.check_box :status ,class:"form-check-input"%>
   </div>
   </div>
+
   <% value={} %>
 <% User.all.each {|x| value[x.id] = x.first_name}%>
   <div class="mb-3 row">

@@ -1,4 +1,11 @@
-<p style="color: green"><%= notice %></p>
+<%begin%>
+<%if notice[1]>0 %>
+<p class="alert alert-success"> <%= notice[0] %> </p>
+<%else%>
+<p class="alert alert-danger"> <%= notice[0] %> </p>
+<%end%>
+<%rescue%>
+<%end%>
 
 <%= render "tasks/taskCard",:task=>@task %>
 

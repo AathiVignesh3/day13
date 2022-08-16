@@ -1,7 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<center><h1>Tasks</h1></center>
-
+<%begin%>
+<%if notice[1]>0 %>
+<p class="alert alert-success"> <%= notice[0] %> </p>
+<%else%>
+<p class="alert alert-danger"> <%= notice[0] %> </p>
+<%end%>
+<%rescue%>
+<%end%>
+<h1 class="display-3">Tasks List</h1>
+<br>
+<br>
 <div id="tasks">
 <table class="table">
   <thead>

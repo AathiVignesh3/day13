@@ -1,13 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<%begin%>
+<%if notice[1]>0 %>
+<p class="alert alert-success"> <%= notice[0] %> </p>
+<%else%>
+<p class="alert alert-danger"> <%= notice[0] %> </p>
+<%end%>
+<%rescue%>
+<%end%>
 
-<h1>Users</h1>
+<h1 class="display-3">Users List</h1>
+<br>
+<br>
 <table class="table table-light">
   <thead class="bg-light">
     <tr>
       <th></th>
       <th>First name</th>
       <th>Last name</th>
-      <th>Dob</th>
+      <th>Date of Birth</th>
       <th></th>
     </tr>
   </thead>
