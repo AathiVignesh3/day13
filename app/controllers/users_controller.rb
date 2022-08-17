@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
-  before_action :authenticate_userpage!
- 
   # GET /users or /users.json
   def index
     @users = User.all
@@ -24,9 +22,6 @@ class UsersController < ApplicationController
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-    @user.first_name.capitalize!
-    @user.last_name.capitalize!
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to user_url(@user), notice: [ "User was successfully created.", 1] }
