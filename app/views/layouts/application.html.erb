@@ -20,18 +20,34 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
+
+      <% if userpage_signed_in? %>
       <%= link_to 'User List', users_path,class:"nav-link active" %>
       <%= link_to 'Task List', tasks_path,class:"nav-link active" %>
       <%= link_to 'New User', new_user_path,class:"nav-link active" %>
       <%= link_to 'New Task', new_task_path,class:"nav-link active" %>
-      
+      <%= button_to 'sign out', destroy_userpage_session_path, method: :delete ,class:"nav-link active" %>
+<%else%>
+      <%= link_to 'Sign Up', new_userpage_registration_path,class:"nav-link active" %>
+      <%= link_to 'Sign in',  new_userpage_session_path,class:"nav-link active" %>
+  <%end%> 
  
       </div>
     </div>
   </div>
 </nav>
 <br>
+
      <div class="container">
+     <%begin%>
+ <% if notice[3]%>
+ <p class="alert alert-success"><%= notice%></p>
+  <%end%>
+  <%rescue%>
+  <%end%>
+  <%if alert%>
+    <p class="alert alert-danger"><%= alert%></p>
+  <%end%>
         <%= yield %>
      </div>
      
