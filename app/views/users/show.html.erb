@@ -10,6 +10,7 @@
 <%= render "users/userCard",:user=>@user %>
 
  <%begin%>
+ 
  <%if Task.where(user_id: @user.id)[0].id>0%>
 <table class="table">
   <thead>
