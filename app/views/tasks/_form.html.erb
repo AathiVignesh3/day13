@@ -38,7 +38,7 @@
   <div class="mb-3 row">
     <%= form.label :User, style: "display: block", class:"col-sm-4 col-form-label" %>
    <div class="col-sm-4">
-    <%= form.select :user_id, :collection => value.sort.map {|k,v| [v,k]} %>
+    <%= form.select :user_id,value.sort.map {|k,v| [v,k]} %>
   </div>
   </div>
 

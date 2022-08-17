@@ -22,11 +22,13 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.name.capitalize!
+
     if Task.where(name:@task.name).count>0
       respond_to do |format|
         format.html { redirect_to tasks_path(@task), notice:["Task was Already Exist", 0] }
       end
     else
+      
     respond_to do |format|
       if @task.save
         format.html { redirect_to task_url(@task), notice:["Task was successfully created.", 1] }
