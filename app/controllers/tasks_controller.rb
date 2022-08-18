@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+
+  helper_method :all
+
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
@@ -7,6 +10,12 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+  end
+
+
+  def task_mailer
+    @user = User.all
+    byebug
   end
 
   # GET /tasks/new
@@ -21,8 +30,9 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task = Task.new(task_params)
-    @task.name.capitalize!
-
+    @task.name.capitalize! 
+    @user = User.find_by_id(@task.user_id)
+    puts @user.inspect
     if Task.where(name:@task.name).count>0
       respond_to do |format|
         format.html { redirect_to tasks_path(@task), notice:["Task was Already Exist", 0] }
@@ -31,6 +41,7 @@ class TasksController < ApplicationController
       
     respond_to do |format|
       if @task.save
+        UserMailer.with(user: @user,task: @task).task_assigned.deliver_now
         format.html { redirect_to task_url(@task), notice:["Task was successfully created.", 1] }
         format.json { render :show, status: :created, location: @task }
       else
@@ -43,8 +54,10 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
+    @user = User.find_by_id(@task.user_id)
     respond_to do |format|
       if @task.update(task_params)
+        UserMailer.with(user: @user,task: @task).task_assigned.deliver_now
         format.html { redirect_to task_url(@task), notice: ["Task was successfully updated.", 1] }
         format.json { render :show, status: :ok, location: @task }
       else
