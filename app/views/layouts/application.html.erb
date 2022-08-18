@@ -22,6 +22,7 @@
       <div class="navbar-nav">
 
       <% if user_signed_in? %>
+      <%= link_to 'Edit Profile', edit_user_registration_path,class:"nav-link active" %>
       <%= link_to 'User List', users_path,class:"nav-link active" %>
       <%= link_to 'Task List', tasks_path,class:"nav-link active" %>
       <%= link_to 'New Task', new_task_path,class:"nav-link active" %>
