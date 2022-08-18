@@ -7,7 +7,9 @@
     <%= user.last_name %> </h5>
     <p class="card-text"> <%= user.dob %> </p>
     <% if current_user.id == user.id%>
+
     <%= link_to "Edit this user", edit_user_registration_path(@user), class:"btn btn-warning m-3" %> 
+
     <%end %>
   <%= link_to "Back to users", users_path,class:"btn btn-secondary m-3"  %>
   </div>
