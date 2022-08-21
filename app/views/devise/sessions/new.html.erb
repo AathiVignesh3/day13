@@ -25,9 +25,9 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in",class:"btn btn-success" %>
+    <%= f.submit t('link.sign_in'),class:"btn btn-success" %>
   </div>
 <% end %>
 <br>
- <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+ <%= link_to t('action.forgot_password'), new_password_path(resource_name) %><br />
 

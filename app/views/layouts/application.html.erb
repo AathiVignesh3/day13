@@ -22,14 +22,14 @@
       <div class="navbar-nav">
 
       <% if user_signed_in? %>
-      <%= link_to 'Edit Profile', edit_user_registration_path,class:"nav-link active" %>
-      <%= link_to 'User List', users_path,class:"nav-link active" %>
-      <%= link_to 'Task List', tasks_path,class:"nav-link active" %>
-      <%= link_to 'New Task', new_task_path,class:"nav-link active" %>
-      <%= button_to 'sign out', destroy_user_session_path, method: :delete ,class:"nav-link active" %>
+      <%= link_to t('link.edit_profile'), edit_user_registration_path,class:"nav-link active" %>
+      <%= link_to t('link.user_list'), users_path,class:"nav-link active" %>
+      <%= link_to t('link.task_list'), tasks_path,class:"nav-link active" %>
+      <%= link_to t('link.new_task'), new_task_path,class:"nav-link active" %>
+      <%= button_to t('link.sign_out'), destroy_user_session_path, method: :delete ,class:"nav-link active" %>
 <%else%>
-      <%= link_to 'Sign Up', new_user_registration_path,class:"nav-link active" %>
-      <%= link_to 'Sign in',  new_user_session_path,class:"nav-link active" %>
+      <%= link_to  t('link.sign_up'), new_user_registration_path,class:"nav-link active" %>
+      <%= link_to t('link.sign_in'),  new_user_session_path,class:"nav-link active" %>
   <%end%> 
  
       </div>
@@ -49,7 +49,14 @@
     <p class="alert alert-danger"><%= alert%></p>
   <%end%>
         <%= yield %>
+      <div class="container-fluid m-auto">
+        <br>
+          <%= link_to "English", root_path(locale: :en)%> |
+          <%= link_to "española", root_path(locale: :es)%>
+        <br>
+      </div>
      </div>
+     
      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>

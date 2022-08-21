@@ -54,10 +54,11 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    @user = User.find_by_id(@task.user_id)
+    
     respond_to do |format|
       if @task.update(task_params)
-        UserMailer.with(user: @user,task: @task).task_assigned.deliver_now
+        @user = User.find_by_id(@task.user_id)
+        UserMailer.with(user: @user,task: @task).task_updated.deliver_now
         format.html { redirect_to task_url(@task), notice: ["Task was successfully updated.", 1] }
         format.json { render :show, status: :ok, location: @task }
       else
