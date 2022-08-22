@@ -26,7 +26,7 @@
       <%= link_to t('link.user_list'), users_path,class:"nav-link active" %>
       <%= link_to t('link.task_list'), tasks_path,class:"nav-link active" %>
       <%= link_to t('link.new_task'), new_task_path,class:"nav-link active" %>
-      <%= button_to t('link.sign_out'), destroy_user_session_path, method: :delete ,class:"nav-link active" %>
+      <%= link_to t('link.sign_out'), destroy_user_session_path,class:"nav-link active" %>
 <%else%>
       <%= link_to  t('link.sign_up'), new_user_registration_path,class:"nav-link active" %>
       <%= link_to t('link.sign_in'),  new_user_session_path,class:"nav-link active" %>
