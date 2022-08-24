@@ -5,7 +5,7 @@ ruby "3.1.2"
 
 gem 'rails-i18n', '~> 7.0', '>= 7.0.5'
 gem 'devise', '~> 4.8', '>= 4.8.1'
-
+gem 'rufus-scheduler', '~> 3.8', '>= 3.8.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
