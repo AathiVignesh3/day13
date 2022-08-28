@@ -1,17 +1,35 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
-
-  helper_method :all
-
+  before_action :set_task, only: %i[ show edit update destroy]
+  helper_method :test
+  skip_before_action :verify_authenticity_token, only:  %i[update  create]
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file",
+        page_size: 'A4',
+        layout: "application",
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75
+      end
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=tasks.csv"
+        render template: "tasks/index"
+      end
+  end
+   
   end
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    
   end
-
 
   def task_mailer
     @user = User.all
@@ -41,7 +59,7 @@ class TasksController < ApplicationController
       
     respond_to do |format|
       if @task.save
-        UserMailer.with(user: @user,task: @task).task_assigned.deliver_now
+        #UserMailer.with(user: @user,task: @task).task_assigned.deliver_now
         format.html { redirect_to task_url(@task), notice:["Task was successfully created.", 1] }
         format.json { render :show, status: :created, location: @task }
       else
@@ -58,15 +76,23 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.update(task_params)
         @user = User.find_by_id(@task.user_id)
-        UserMailer.with(user: @user,task: @task).task_updated.deliver_now
+       # UserMailer.with(user: @user,task: @task).task_updated.deliver_now
         format.html { redirect_to task_url(@task), notice: ["Task was successfully updated.", 1] }
         format.json { render :show, status: :ok, location: @task }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
+
+  # def update
+  #   if @task.update(task_params)
+  #     puts "hello"
+  #   end
+  # end
 
   # DELETE /tasks/1 or /tasks/1.json
   def destroy
@@ -75,6 +101,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: ["Task was successfully destroyed.", 0] }
       format.json { head :no_content }
+      format.js   { render :layout => false }
     end
   end
 

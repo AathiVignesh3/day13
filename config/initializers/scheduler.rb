@@ -6,7 +6,7 @@ s = Rufus::Scheduler.singleton
 
 
 s.every '1d' do
- task = Task.where("due_date <= ?",Time.now)
+ task = Task.where("due_date<='#{Time.now}' and status = #{false}")
   if task.present?
 
     task.each do |task|

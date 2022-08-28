@@ -6,6 +6,19 @@ ruby "3.1.2"
 gem 'rails-i18n', '~> 7.0', '>= 7.0.5'
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'rufus-scheduler', '~> 3.8', '>= 3.8.2'
+gem 'pdfkit'
+gem 'responders'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'wkhtmltopdf', '~> 0.1.2'
+gem 'wicked_pdf', '~> 2.6', '>= 2.6.3'
+gem "comma", "~> 3.0"
+gem "csv"
+gem 'jquery-rails'
+
+# gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
+
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"

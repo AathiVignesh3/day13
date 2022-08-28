@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
 
     has_many :task
+
+    comma do
+      first_name
+      last_name
+      dob
+      email 
+    end
 end

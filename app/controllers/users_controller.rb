@@ -1,13 +1,33 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  require 'csv'
   # GET /users or /users.json
   def index
     @users = User.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file",
+        template:"users/index",
+        page_size: 'A4',
+        layout: "application",
+        orientation: "Landscape",
+        lowquality: true,
+        zoom: 1,
+        dpi: 75
+      end
+      format.csv do
+        response.headers['Content-Type'] = 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=users.csv"
+        render template: "users/index"
+      end
+  end
   end
 
   # GET /users/1 or /users/1.json
   def show
-    @value = 0
+    @user = User.find(params[:id])
+    
   end
 
   # GET /users/new
