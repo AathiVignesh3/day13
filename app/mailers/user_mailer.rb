@@ -12,5 +12,10 @@ def task_updated
     mail(to: @user.email,subject:"Task updated")
 end
 
+def task_duedate
+    @user = params[:user]
+    @task = params[:task]
+    mail(to: @user.email,subject:"Task due date reminder")
+end
 
 end

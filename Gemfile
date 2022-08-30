@@ -5,6 +5,19 @@ ruby "3.1.2"
 
 gem 'rails-i18n', '~> 7.0', '>= 7.0.5'
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'rufus-scheduler', '~> 3.8', '>= 3.8.2'
+gem 'pdfkit'
+gem 'responders'
+gem 'wkhtmltopdf-binary', '~> 0.12.6.5'
+gem 'wkhtmltopdf', '~> 0.1.2'
+gem 'wicked_pdf', '~> 2.6', '>= 2.6.3'
+gem "comma", "~> 3.0"
+gem "csv"
+gem 'jquery-rails'
+
+# gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
+
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -51,10 +64,12 @@ gem "bootsnap", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
-
+gem 'ffi', '~> 1.15', '>= 1.15.5'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do

@@ -1,5 +1,5 @@
 
- <%= form_with(model: task) do |form| %> 
+ <%= form_for @task, remote: true ,html: {class: "update"} do |form| %> 
   <% if task.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -30,7 +30,7 @@
     <%= form.label :status, style: "display: block", class:"col-sm-4 col-form-label" %>
    (Completed/pending)
         <div class="col-sm-4">
-    <%= form.check_box :status ,class:"form-check-input"%>
+    <%= form.check_box :status ,class:"form-check-input "%>
   </div>
   </div>
 
@@ -39,11 +39,11 @@
   <div class="mb-3 row">
     <%= form.label :User, style: "display: block", class:"col-sm-4 col-form-label" %>
    <div class="col-sm-4">
-    <%= form.select :user_id,value.sort.map {|k,v| [v,k]} %>
+    <%= form.select :user_id,value.sort.map {|k,v| [v,k]},class: "update_task" %>
   </div>
   </div>
 
   <div class="mb-3 row col-4 m-auto">
- <%= form.submit class: "btn btn-success",remote: true %>
-  </div>
+ <%= form.submit "update",class: "btn btn-success",remote: true %>
+      </div>
 <% end %>

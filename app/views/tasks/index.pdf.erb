@@ -1,0 +1,30 @@
+<html>
+ <head><%= wicked_pdf_stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" -%></head>
+<body>
+<table class="table" style="width:100%;">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Employee</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @tasks.each do |task| %>
+   <tr scope="row">
+<td><%= task.name %></td>
+<td> <%= task.due_date %></td>
+<% if task.status %>
+ <td style="color:green"><%= "Completed" %></td>
+ <% else%>
+ <td style="color:Red"><%= "Pending"%></td>
+ <%end%>
+ <%user = User.find_by_id(task.user_id)%>
+ <td><%= user.first_name%> <%= user.last_name%></td>
+ </tr>
+  <% end %>
+  </tbody>
+</table>
+</body>
+</html>

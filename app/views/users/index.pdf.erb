@@ -7,26 +7,32 @@
 <%rescue%>
 <%end%>
 
-<%= render "tasks/taskCard",:task=>@task %>
-
+<h1 class="display-3">Users List</h1>
+<br>
+<br>
 <table class="table table-light">
   <thead class="bg-light">
     <tr>
       <th></th>
       <th>First name</th>
       <th>Last name</th>
-      <th>Dob</th>
+      <th>Email </th>
+      <th>Date of Birth</th>
       <th></th>
     </tr>
   </thead>
     <tbody>
-<% User.where(id: @task.user_id).each do |user|%>
-<tr><%= render "users/user", :user => user %>
-</tr>
-<%end%>
+<div id="users">
+  <% @users.each do |user| %>
+  <tr>
+    <td scope="row"></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.dob %></td>
+  </tr>
+  <% end %>
+</div>
 </tbody>
 </table>
-<div>
-  <%= button_to t('action.destroy_task'), @task, method: :delete, class: "btn btn-danger" %>
-  
-</div>
+

@@ -1,0 +1,15 @@
+<h1>Hey, <%= @user.first_name %> <%= @user.last_name %> </h1>
+<br>
+<br>
+<p>
+    This is your task due Date remainder kindly check it 
+    <br> Task:<b><%= @task.name %></b>
+    <br> date:<b><%= @task.due_date %></b>
+<% if @task.status %>
+<br><strong>Status: </strong> Completed
+<%else%>
+<br><strong>Status: </strong> pending
+<%end%>
+    <br>
+    Thanks and regards
+    </p>
