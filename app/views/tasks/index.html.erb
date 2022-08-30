@@ -26,7 +26,7 @@
   </tbody>
 </table>
 </div>
-<p id="pdf_link"><%= link_to "Download PDF",tasks_path(:format => "pdf") %></p>
+
 <%= link_to t('link.new_task'), new_task_path ,class:"btn btn-success"%>
 <%= link_to "Download PDF", tasks_path(format: :pdf),class:"btn btn-success"%>
 <%= link_to "Download CSV", tasks_path(format: :csv),class:"btn btn-success"%>

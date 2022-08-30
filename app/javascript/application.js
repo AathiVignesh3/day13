@@ -18,4 +18,19 @@ $(document).ready(function(){
     e.preventDefault(); 
 });
 
+$("form select").on('change', function(e) {
+    $.ajax({
+        url: $('.update').attr('action'),
+        data: $('.update').serialize(),
+        type: "POST",
+        dataType: "json",
+        success: function(response) {
+            console.log(response);
+            alert("Form Updated successfully");
+        },
+        error: function(xhr, textStatus, errorThrown) {}
+    });
+    e.preventDefault(); 
+});
+
 });
